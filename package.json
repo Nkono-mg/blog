@@ -1,0 +1,27 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm --prefix apps/api run dev",
+    "dev:client": "npm --prefix apps/client run dev",
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:client\"",
+    "build:api": "npm --prefix apps/api run build",
+    "build:client": "npm --prefix apps/client run build",
+    "build": "npm run build:api && npm run build:client",
+    "start:api": "npm --prefix apps/api run start",
+    "start:client": "npm --prefix apps/client run start",
+    "start": "concurrently \"npm run start:api\" \"npm run start:client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
