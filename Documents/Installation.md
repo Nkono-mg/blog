@@ -5,15 +5,15 @@
 1. Cloner le projet :
 
 ```bash
-git clone https://github.com/ton-utilisateur/mon-projet.git
+git clone https://github.com/Nkono-mg/blog.git
 ```
 
-2. Aller dans le dossier dur projet
-   cd mon-projet
+2. Aller dans le dossier du projet
+   cd blog
 3. Installer les dépendances:
    npm install
 
 ## Lancement du projet
 
-Pour démarrer le projet en mode développement :
-npm run dev
+Pour démarrer le projet:
+npm run dev ou npm run start
