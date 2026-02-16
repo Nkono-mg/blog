@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "apps/*"
   ],
   "scripts": {
     "dev:api": "npm --prefix apps/api run dev",
@@ -15,7 +14,10 @@
     "build": "npm run build:api && npm run build:client",
     "start:api": "npm --prefix apps/api run start",
     "start:client": "npm --prefix apps/client run start",
-    "start": "concurrently \"npm run start:api\" \"npm run start:client\""
+    "start": "concurrently \"npm run start:api\" \"npm run start:client\"",
+    "prisma:pull": "prisma db pull --schema=apps/api/prisma/schema.generated.prisma",
+    "prisma:generate": "tsx apps/api/scripts/build-prisma-schema.ts && prisma generate --schema=apps/api/prisma/schema.generated.prisma",
+    "prisma:migrate": "tsx apps/api/scripts/build-prisma-schema.ts && prisma migrate dev --schema=apps/api/prisma/schema.generated.prisma"
   },
   "keywords": [],
   "author": "",
@@ -23,5 +25,8 @@
   "description": "",
   "devDependencies": {
     "concurrently": "^9.2.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.4.0"
   }
 }
