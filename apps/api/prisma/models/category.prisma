@@ -1,10 +1,11 @@
 model Category {
-  id          String    @id @default(uuid())
-  name        String    @unique
-  slug        String    @unique 
-  description String
-  color       String
+  id          String   @id @default(uuid())
+  name        String   @db.VarChar(100)
+  slug        String   @unique @db.VarChar(100)
+  description String   @db.Text
+  color       String   @db.VarChar(9) // #RRGGBB ou #RRGGBBAA
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-  //relation article <=> category
   articles    Article[] @relation("ArticleToCategory")
 }

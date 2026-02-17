@@ -4,4 +4,5 @@ export interface CategoryDTO {
   slug: string;
   description: string;
   color: string;
+  createdAt: Date;
 }
