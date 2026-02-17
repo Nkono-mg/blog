@@ -1,0 +1,9 @@
+model EmailNotification {
+  id          String    @id @default(uuid())
+  subject     String 
+  recipients  String[] 
+  sentAt      DateTime  @default(now()) 
+  status      EmailStatus @default(draft)
+  article     Article   @relation(fields: [articleId], references: [id]) 
+  articleId   String
+}

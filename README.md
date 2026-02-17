@@ -1,4 +1,8 @@
-# Choix du framework Node.js
+## Installation du projet
+
+Voir le guide d'installation dans le dossier apps/Documents/installation.md
+
+## Choix du framework Node.js
 
 J'ai choisi **NestJS** plutôt que **Express.js** pour des raisons de sécurité, d’architecture et de facilité dans la mise en place des bonnes pratiques telles que le **Clean Code** et le **Domain-Driven Design (DDD)**.
 

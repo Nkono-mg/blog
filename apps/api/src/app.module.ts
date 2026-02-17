@@ -1,23 +1,19 @@
 import { Module } from '@nestjs/common';
-
-import { CategoriesController } from './modules/categories/category.controller.js';
-import { ArticlesController } from './modules/articles/article.controller.js';
-import { EmailNotificationsController } from './modules/email-notifications/email-notification.controller.js';
-import { NetworksController } from './modules/networks/network.controller.js';
-import { UsersController } from './modules/users/user.controller.js';
+import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module.js';
-import { UsersService } from './modules/users/user.service.js';
-import { UsersDAO } from './modules/users/DAO/user.dao.js';
+import { AuthModule } from './modules/users/Auth/auth.module.js';
+import { UsersModule } from './modules/users/user.module.js';
+import { ElasticsearchModule } from './modules/elasticsearch/elasticsearch.module.js';
 
 @Module({
-  imports: [PrismaModule],
-  controllers: [
-    ArticlesController,
-    CategoriesController,
-    EmailNotificationsController,
-    NetworksController,
-    UsersController,
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    PrismaModule,
+    AuthModule,
+    UsersModule,
+    ElasticsearchModule,
   ],
-  providers: [UsersService, UsersDAO],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

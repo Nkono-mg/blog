@@ -1,0 +1,8 @@
+model Network {
+  id          String    @id @default(uuid())
+  name        String 
+  description String
+
+  //relation article <=>network
+  articles    Article[]
+}

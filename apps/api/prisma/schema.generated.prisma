@@ -7,23 +7,84 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+   shadowDatabaseUrl = env("shadowDatabaseUrl")
 }
 
+
+enum EmailStatus {
+  draft
+  sent
+  failed
+}
 
 enum UserRole {
   USER
   ADMIN
-  MODERATOR
+  EDITOR
 }
 
+model Article {
+  id          String    @id @default(uuid())
+  title       String
+  content     String    @db.Text 
+  excerpt     String?   @db.Text
+  status      String    @default("draft")
+  featured    Boolean   @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now()) 
+  updatedAt   DateTime  @updatedAt
+
+  // Relation avec User (Auteur)
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    String
+
+  // Autres relations obligatoires
+  network     Network   @relation(fields: [networkId], references: [id]) 
+  networkId   String
+  categories  Category[] @relation("ArticleToCategory")
+  notifications EmailNotification[]
+}
+
+model Category {
+  id          String    @id @default(uuid())
+  name        String    @unique
+  slug        String    @unique 
+  description String
+  color       String
+
+  //relation article <=> category
+  articles    Article[] @relation("ArticleToCategory")
+}
+
+
+model EmailNotification {
+  id          String    @id @default(uuid())
+  subject     String 
+  recipients  String[] 
+  sentAt      DateTime  @default(now()) 
+  status      EmailStatus @default(draft)
+  article     Article   @relation(fields: [articleId], references: [id]) 
+  articleId   String
+}
+
+model Network {
+  id          String    @id @default(uuid())
+  name        String 
+  description String
+
+  //relation article <=>network
+  articles    Article[]
+}
 
 model User {
   id        String   @id @default(uuid())
   userName  String   @db.VarChar(50)
   email     String   @unique @db.VarChar(255)
   password  String   @db.VarChar(255)
-  role      UserRole     @default(USER)
+  role      UserRole @default(USER) 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  // Relation : Un utilisateur peut écrire plusieurs articles
+  articles  Article[]
 }

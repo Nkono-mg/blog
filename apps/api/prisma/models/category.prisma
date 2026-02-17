@@ -1,0 +1,10 @@
+model Category {
+  id          String    @id @default(uuid())
+  name        String    @unique
+  slug        String    @unique 
+  description String
+  color       String
+
+  //relation article <=> category
+  articles    Article[] @relation("ArticleToCategory")
+}
