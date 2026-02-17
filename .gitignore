@@ -14,5 +14,5 @@ build/
 # Logs
 *.log
 
-# files
+# Elasticsearch
 *.deb
