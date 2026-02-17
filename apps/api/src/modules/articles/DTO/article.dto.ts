@@ -24,7 +24,7 @@ export class ArticleDTO {
   excerpt?: string;
 
   @IsString()
-  status?: string; // draft par défaut dans Prisma
+  status: string; // draft par défaut dans Prisma
 
   @IsBoolean()
   featured?: boolean;

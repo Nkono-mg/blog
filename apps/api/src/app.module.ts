@@ -6,6 +6,7 @@ import { UserModule } from './modules/users/user.module.js';
 import { ElasticsearchModule } from './modules/elasticsearch/elasticsearch.module.js';
 import { CategoryModule } from './modules/categories/category.module.js';
 import { NetworkModule } from './modules/networks/network.module.js';
+import { ArticleModule } from './modules/articles/article.module.js';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { NetworkModule } from './modules/networks/network.module.js';
     ElasticsearchModule,
     CategoryModule,
     NetworkModule,
+    ArticleModule,
   ],
   controllers: [],
   providers: [],
