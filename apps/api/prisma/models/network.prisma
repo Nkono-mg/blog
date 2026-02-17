@@ -1,8 +1,7 @@
-model Network {
-  id          String    @id @default(uuid())
-  name        String 
-  description String
-
-  //relation article <=>network
-  articles    Article[]
+model Network { 
+    id String @id @default(uuid()) 
+    name String @unique @db.VarChar(50)
+    description String @db.VarChar(100)
+    //relation avec Article
+     articles    Article[] // <-- lien inverse
 }

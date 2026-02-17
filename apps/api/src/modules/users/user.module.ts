@@ -13,4 +13,4 @@ import { ElasticsearchService } from '../elasticsearch/elasticsearch.service.js'
   providers: [UserService, UsersDAO, PrismaService, ElasticsearchService],
   exports: [UserService, UsersDAO],
 })
-export class UsersModule {}
+export class UserModule {}

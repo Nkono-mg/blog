@@ -46,16 +46,16 @@ model Article {
 }
 
 model Category {
-  id          String    @id @default(uuid())
-  name        String    @unique
-  slug        String    @unique 
-  description String
-  color       String
+  id          String   @id @default(uuid())
+  name        String   @db.VarChar(100)
+  slug        String   @unique @db.VarChar(100)
+  description String   @db.Text
+  color       String   @db.VarChar(9) // #RRGGBB ou #RRGGBBAA
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-  //relation article <=> category
   articles    Article[] @relation("ArticleToCategory")
 }
-
 
 model EmailNotification {
   id          String    @id @default(uuid())
@@ -67,13 +67,12 @@ model EmailNotification {
   articleId   String
 }
 
-model Network {
-  id          String    @id @default(uuid())
-  name        String 
-  description String
-
-  //relation article <=>network
-  articles    Article[]
+model Network { 
+    id String @id @default(uuid()) 
+    name String @unique @db.VarChar(50)
+    description String @db.VarChar(100)
+    //relation avec Article
+     articles    Article[] // <-- lien inverse
 }
 
 model User {
