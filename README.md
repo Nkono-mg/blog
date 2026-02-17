@@ -1,4 +1,4 @@
-## Installation du projet
+# Installation du projet
 
 Voir le guide d'installation dans le dossier apps/Documents/installation.md
 
