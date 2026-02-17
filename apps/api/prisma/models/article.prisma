@@ -1,6 +1,6 @@
 model Article {
   id          String    @id @default(uuid())
-  title       String
+  title       String    @db.VarChar(100)
   content     String    @db.Text 
   excerpt     String?   @db.Text
   status      String    @default("draft")

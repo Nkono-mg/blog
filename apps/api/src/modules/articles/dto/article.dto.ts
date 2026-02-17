@@ -1,16 +1,49 @@
-import { StatusArticleType } from '../types/status.article.type.js';
+import {
+  IsString,
+  IsNotEmpty,
+  IsOptional,
+  IsBoolean,
+  IsDateString,
+  IsArray,
+  IsUUID,
+  MaxLength,
+} from 'class-validator';
 
-export interface ArticleDTO {
-  id: string;
+export class ArticleDTO {
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(100)
   title: string;
+
+  @IsString()
+  @IsNotEmpty()
   content: string;
-  excerpt: string;
-  userId: string;
-  idCategories: string[];
-  idNetwork: string[];
-  status: StatusArticleType;
-  featured: boolean;
-  publishedAt: Date | null;
-  createdAt: Date;
-  updatedAt: Date;
+
+  @IsOptional()
+  @IsString()
+  excerpt?: string;
+
+  @IsString()
+  status?: string; // draft par défaut dans Prisma
+
+  @IsBoolean()
+  featured?: boolean;
+
+  @IsOptional()
+  @IsDateString()
+  publishedAt?: Date;
+
+  // Relations obligatoires
+  @IsUUID()
+  @IsNotEmpty()
+  authorId: string;
+
+  @IsUUID()
+  @IsNotEmpty()
+  networkId: string;
+
+  // Relation many-to-many avec Category
+  @IsArray()
+  @IsUUID('4', { each: true })
+  categoryIds: string[];
 }
