@@ -7,6 +7,7 @@ import { ElasticsearchModule } from './modules/elasticsearch/elasticsearch.modul
 import { CategoryModule } from './modules/categories/category.module.js';
 import { NetworkModule } from './modules/networks/network.module.js';
 import { ArticleModule } from './modules/articles/article.module.js';
+import { EmailNotificationModule } from './modules/email-notifications/email.notification.module.js';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ArticleModule } from './modules/articles/article.module.js';
     CategoryModule,
     NetworkModule,
     ArticleModule,
+    EmailNotificationModule,
   ],
   controllers: [],
   providers: [],
