@@ -7,6 +7,7 @@ export class EmailNotificationDAO {
   constructor(private readonly prismaService: PrismaService) {}
 
   async createEmail(dataForm: EmailNotificationDTO) {
+    
     return this.prismaService.prisma.emailNotification.create({
       data: {
         subject: dataForm.subject,

@@ -1,9 +1,12 @@
-import { Button, HStack } from "@chakra-ui/react";
+import Banner from "@/shared/components/ui/Banner";
+import { Box, Button, Flex, Grid, HStack } from "@chakra-ui/react";
+import Article from "./articles/page";
+import Template from "@/shared/components/Template";
 
-export default function page() {
+export default function Home() {
   return (
-    <HStack className="mt-20 ml-20">
-      <Button>Click me</Button>
-    </HStack>
+    <Template>
+      <Article />
+    </Template>
   );
 }
