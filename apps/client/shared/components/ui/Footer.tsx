@@ -28,7 +28,7 @@ export default function Footer() {
           Designed by{" "}
           <Link
             as={NextLink}
-            href="https://malatec-consulting.com/"
+            href="#"
             color="rgb(24, 119, 242)"
             _hover={{ textDecoration: "underline" }}
           >

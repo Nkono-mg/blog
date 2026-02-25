@@ -2,7 +2,7 @@ import DateField from "@/shared/components/ui/DateField";
 import { Button, Card, Image, Text, Grid, Flex, Box } from "@chakra-ui/react";
 
 export default function Article() {
-  const data = Array.from({ length: 20 }, (_, i) => i);
+  const data = Array.from({ length: 33 }, (_, i) => i);
 
   return (
     <Box>
